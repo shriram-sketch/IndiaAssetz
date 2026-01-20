@@ -92,6 +92,10 @@ body {
   @apply text-sm font-medium text-gray-900 truncate;
 }
 
+.file-name.clickable {
+  @apply cursor-pointer hover:text-blue-600 hover:underline transition-colors;
+}
+
 .file-size {
   @apply text-xs text-gray-500;
 }

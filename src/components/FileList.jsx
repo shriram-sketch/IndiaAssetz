@@ -1,4 +1,11 @@
 function FileList({ files, onRemove }) {
+  const handleFileClick = (file) => {
+    const url = URL.createObjectURL(file);
+    window.open(url, '_blank');
+    // Clean up the object URL after a delay
+    setTimeout(() => URL.revokeObjectURL(url), 100);
+  }
+
   if (files.length === 0) {
     return (
       <div className="empty-state">
@@ -33,7 +40,11 @@ function FileList({ files, onRemove }) {
             </div>
             
             <div className="file-details">
-              <p className="file-name">
+              <p 
+                className="file-name clickable"
+                onClick={() => handleFileClick(fileItem.file)}
+                title="Click to open file"
+              >
                 {fileItem.file.name}
               </p>
               <p className="file-size">
